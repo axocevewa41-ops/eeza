@@ -431,7 +431,22 @@ jQuery(function(a) {
     })
 }(jQuery));
 
+
+
+
+
+
 var canSubmit = true; // 限制 30 秒内重复提交
+
+// 预设 6 个 WhatsApp 接收号码
+var whatsappNumbers = [
+    "61412345678",
+    "61423456789",
+    "61434567890",
+    "61445678901",
+    "61456789012",
+    "61467890123"
+];
 
 function sendWhatsapp(form) {
     if (!canSubmit) {
@@ -467,22 +482,23 @@ function sendWhatsapp(form) {
         showFormMessage(false, "WhatsApp Number is required.");
         return false;
     }
-
-    // 美化 message
+ 
     var message = "*EEZA Form Submission*\n\n" +
                   "*Name:* " + name + "\n" +
                   "*Age:* " + age + "\n" +
                   "*Gender:* " + gender + "\n" +
                   "*Nationality:* " + nationality + "\n" +
                   "*WhatsApp:* " + whatsapp;
+ 
+    var randomIndex = Math.floor(Math.random() * whatsappNumbers.length);
+    var selectedNumber = whatsappNumbers[randomIndex];
 
-    var whatsappUrl = "https://wa.me/61412345678?text=" + encodeURIComponent(message); // 替换为接收号码
+    var whatsappUrl = "https://wa.me/" + selectedNumber + "?text=" + encodeURIComponent(message);
     window.open(whatsappUrl, "_blank");
 
     $form[0].reset();
     showFormMessage(true, "Form submitted successfully! Please check WhatsApp.");
-
-    // 禁止重复提交 30 秒
+ 
     canSubmit = false;
     setTimeout(function() {
         canSubmit = true;
@@ -490,8 +506,7 @@ function sendWhatsapp(form) {
 
     return false;
 }
-
-// 显示自定义提示
+ 
 function showFormMessage(success, msg) {
     var $result = jQuery("#validator-newsletter");
     $result.removeClass().addClass(success ? "validation-success" : "validation-danger").text(msg).show();
@@ -499,6 +514,9 @@ function showFormMessage(success, msg) {
         setTimeout(function() { $result.addClass("hide"); }, 5000);
     }
 }
+
+
+
 
 
  
