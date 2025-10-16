@@ -442,8 +442,6 @@ var canSubmit = true; // 限制 30 秒内重复提交
    var whatsappNumbers = [
     "61410134880",
     "61410110489",
-    "61410130410",
-    "61410142218", 
 ];
 
 function sendWhatsapp(form) {
@@ -519,3 +517,4 @@ function showFormMessage(success, msg) {
 
 
  
+
