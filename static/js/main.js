@@ -439,13 +439,11 @@ jQuery(function(a) {
 var canSubmit = true; // 限制 30 秒内重复提交
 
 // 预设 6 个 WhatsApp 接收号码
-var whatsappNumbers = [
-    "61412345678",
-    "61423456789",
-    "61434567890",
-    "61445678901",
-    "61456789012",
-    "61467890123"
+   var whatsappNumbers = [
+    "61410134880",
+    "61410110489",
+    "61410130410",
+    "61410142218", 
 ];
 
 function sendWhatsapp(form) {
@@ -514,6 +512,7 @@ function showFormMessage(success, msg) {
         setTimeout(function() { $result.addClass("hide"); }, 5000);
     }
 }
+
 
 
 
